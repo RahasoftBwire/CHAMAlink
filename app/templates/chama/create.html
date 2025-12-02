@@ -14,6 +14,7 @@
                 </div>
                 <div class="card-body p-4">
                     <form id="createChamaForm">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="chamaName" class="form-label">Chama Name *</label>
@@ -75,11 +76,19 @@
                             <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary">
                                 <i class="fas fa-arrow-left me-2"></i>Cancel
                             </a>
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" id="submitBtn">
                                 <i class="fas fa-plus me-2"></i>Create Chama
                             </button>
                         </div>
                     </form>
+                    
+                    <!-- Loading Spinner -->
+                    <div id="loadingSpinner" class="text-center mt-3" style="display: none;">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2">Creating your chama...</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,56 +96,109 @@
 </div>
 
 <script>
-// Handle meeting frequency selection
-document.getElementById('meetingFrequency').addEventListener('change', function() {
-    const customInput = document.getElementById('customDateInput');
-    if (this.value === 'custom') {
-        customInput.style.display = 'block';
-    } else {
-        customInput.style.display = 'none';
-    }
-});
-
-// Set minimum date to today
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Chama create form loaded');
+    
+    // Set minimum date to today
     const today = new Date().toISOString().split('T')[0];
-    document.getElementById('nextMeetingDate').setAttribute('min', today);
-});
-
-document.getElementById('createChamaForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData);
-    
-    // Validate
-    if (!data.name || !data.monthly_contribution) {
-        alert('Please fill in all required fields');
-        return;
+    const dateInput = document.getElementById('nextMeetingDate');
+    if (dateInput) {
+        dateInput.setAttribute('min', today);
     }
     
-    // Submit
-    fetch('/chama/create', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': '{{ csrf_token() }}'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Chama created successfully!');
-            window.location.href = `/chama/${data.chama_id}`;
-        } else {
-            alert('Error: ' + data.message);
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred while creating the chama');
-    });
+    // Handle meeting frequency selection
+    const frequencySelect = document.getElementById('meetingFrequency');
+    const customInput = document.getElementById('customDateInput');
+    
+    if (frequencySelect) {
+        frequencySelect.addEventListener('change', function() {
+            if (this.value === 'custom') {
+                customInput.style.display = 'block';
+            } else {
+                customInput.style.display = 'none';
+            }
+        });
+    }
+    
+    // Handle form submission
+    const form = document.getElementById('createChamaForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    
+    if (form) {
+        console.log('Form found, attaching submit handler');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Form submitted');
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            console.log('Form data:', data);
+            
+            // Validate
+            if (!data.name || !data.name.trim()) {
+                alert('Please enter a chama name');
+                return;
+            }
+            
+            if (!data.monthly_contribution || parseFloat(data.monthly_contribution) <= 0) {
+                alert('Please enter a valid monthly contribution amount');
+                return;
+            }
+            
+            // Disable button and show spinner
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Creating...';
+            loadingSpinner.style.display = 'block';
+            
+            // Get CSRF token
+            const csrfToken = document.querySelector('[name=csrf_token]').value || 
+                              document.querySelector('meta[name="csrf-token"]').content;
+            
+            console.log('Sending request to /chama/create');
+            
+            // Submit
+            fetch('/chama/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response data:', data);
+                
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-plus me-2"></i>Create Chama';
+                loadingSpinner.style.display = 'none';
+                
+                if (data.success) {
+                    alert('Chama created successfully!');
+                    window.location.href = `/chama/${data.chama_id}`;
+                } else {
+                    alert('Error: ' + (data.message || 'Unknown error occurred'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-plus me-2"></i>Create Chama';
+                loadingSpinner.style.display = 'none';
+                
+                alert('An error occurred while creating the chama. Please check the console for details.');
+            });
+        });
+    } else {
+        console.error('Form not found!');
+    }
 });
 </script>
 {% endblock %}

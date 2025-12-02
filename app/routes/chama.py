@@ -66,6 +66,7 @@ def create_chama():
     
     try:
         data = request.get_json() if request.is_json else request.form
+        current_app.logger.info(f"Chama creation request data: {data}")
         
         # Validate required fields
         if not data.get('name') or not data.get('name').strip():
@@ -128,13 +129,14 @@ def create_chama():
         db.session.add(chama)
         db.session.flush()  # Get the chama ID
         
-        # Add creator as admin member
-        membership = chama_members.insert().values(
+        # Add creator as admin member using direct SQL insert
+        from app.models.chama import chama_members as chama_members_table
+        membership_stmt = chama_members_table.insert().values(
             user_id=current_user.id,
             chama_id=chama.id,
             role='creator'
         )
-        db.session.execute(membership)
+        db.session.execute(membership_stmt)
         db.session.commit()
         
         if request.is_json:
@@ -198,12 +200,9 @@ def chama_detail(chama_id):
                              upcoming_events=upcoming_events,
                              user_role=user_role)
     except Exception as e:
+        import traceback
         current_app.logger.error(f"Error accessing chama details: {e}")
-        flash('Error accessing chama details. Please try again.', 'error')
-        return redirect(url_for('main.dashboard'))
-    
-    except Exception as e:
-        current_app.logger.error(f'Error accessing chama details: {str(e)}')
+        current_app.logger.error(traceback.format_exc())
         flash(f'Error accessing chama details: {str(e)}', 'error')
         return redirect(url_for('main.dashboard'))
 

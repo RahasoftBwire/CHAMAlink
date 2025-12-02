@@ -28,8 +28,8 @@ class Chama(db.Model):
     # Currency relationship
     default_currency_id = db.Column(db.Integer, db.ForeignKey('currencies.id'), nullable=True)
     
-    # Many-to-many relationship with users
-    members = db.relationship('User', secondary='chama_members', backref='chamas')
+    # Many-to-many relationship with users (no backref to avoid conflict with User.chamas property)
+    members = db.relationship('User', secondary='chama_members', overlaps="chamas")
     
     # Currency settings
     base_currency = db.Column(db.String(3), default='KES')  # Chama's base currency
