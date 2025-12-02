@@ -1,5 +1,5 @@
 """
-Multi-language and theme support for ChamaLink
+Multi-language and theme support for Bwire Finance Cloud
 """
 
 from flask import session, request, current_app

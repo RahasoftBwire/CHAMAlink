@@ -370,7 +370,7 @@ def request_agent_help():
                     <h4 style="color: #1565c0; margin-top: 0;">Next Steps</h4>
                     <p style="margin: 0;">
                         Please respond to this user as soon as possible. You can reply directly to this email 
-                        or use the ChamaLink admin dashboard to continue the chat conversation.
+                        or use the Bwire Finance Cloud admin dashboard to continue the chat conversation.
                     </p>
                 </div>
             </div>
@@ -378,7 +378,7 @@ def request_agent_help():
         """
         
         # Send email to support team
-        support_email = "support@chamalink.co.ke"  # Your support email
+        support_email = "support@bwirefinance.co.ke"  # Your support email
         success = send_email(
             to_email=support_email,
             subject=email_subject,
@@ -416,7 +416,7 @@ def api_agent_help():
         response = {
             'success': True,
             'message': 'Message received',
-            'agent_response': f'Hello! I received your message: "{message}". How can I help you with ChamaLink today?',
+            'agent_response': f'Hello! I received your message: "{message}". How can I help you with Bwire Finance Cloud today?',
             'timestamp': datetime.now().isoformat()
         }
         

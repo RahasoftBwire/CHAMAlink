@@ -25,13 +25,13 @@ class SecurityEmailNotifier:
         self.smtp_port = app.config.get('SMTP_PORT', 587)
         self.smtp_username = app.config.get('SMTP_USERNAME', '')
         self.smtp_password = app.config.get('SMTP_PASSWORD', '')
-        self.admin_emails = app.config.get('SECURITY_ADMIN_EMAILS', ['admin@chamalink.com'])
-        self.from_email = app.config.get('FROM_EMAIL', 'security@chamalink.com')
+        self.admin_emails = app.config.get('SECURITY_ADMIN_EMAILS', ['admin@bwirefinance.com'])
+        self.from_email = app.config.get('FROM_EMAIL', 'security@bwirefinance.com')
     
     def send_security_alert(self, event_type, severity, details, user_info=None):
         """Send security alert email to administrators"""
         try:
-            subject = f"🚨 ChamaLink Security Alert - {event_type.upper()} ({severity})"
+            subject = f"🚨 Bwire Finance Cloud Security Alert - {event_type.upper()} ({severity})"
             
             # Create email content
             html_content = self._create_security_email_template(
@@ -52,7 +52,7 @@ class SecurityEmailNotifier:
     def send_breach_notification(self, breach_details, affected_users=None):
         """Send data breach notification"""
         try:
-            subject = "🔴 CRITICAL: Security Breach Detected - ChamaLink"
+            subject = "🔴 CRITICAL: Security Breach Detected - Bwire Finance Cloud"
             
             html_content = self._create_breach_email_template(breach_details, affected_users)
             
@@ -70,7 +70,7 @@ class SecurityEmailNotifier:
     def send_suspicious_activity_alert(self, activity_details):
         """Send alert for suspicious activity patterns"""
         try:
-            subject = f"⚠️ Suspicious Activity Detected - ChamaLink"
+            subject = f"⚠️ Suspicious Activity Detected - Bwire Finance Cloud"
             
             html_content = self._create_suspicious_activity_template(activity_details)
             
@@ -120,14 +120,14 @@ class SecurityEmailNotifier:
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Security Alert - ChamaLink</title>
+            <title>Security Alert - Bwire Finance Cloud</title>
         </head>
         <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
             
             <!-- Header -->
             <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; text-align: center; color: white; border-radius: 10px 10px 0 0;">
                 <h1 style="margin: 0; font-size: 24px;">🚨 Security Alert</h1>
-                <p style="margin: 10px 0 0 0; opacity: 0.9;">ChamaLink Security Monitoring System</p>
+                <p style="margin: 10px 0 0 0; opacity: 0.9;">Bwire Finance Cloud Security Monitoring System</p>
             </div>
             
             <!-- Alert Details -->
@@ -213,7 +213,7 @@ class SecurityEmailNotifier:
                 <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
                     <h4 style="margin: 0 0 15px 0;">Recommended Actions</h4>
                     <p style="margin: 0 0 20px 0;">Please review this security event and take appropriate action if necessary.</p>
-                    <a href="https://chamalink.com/security-dashboard" 
+                    <a href="https://bwirefinance.com/security-dashboard" 
                        style="background: #007bff; color: white; padding: 12px 30px; text-decoration: none; border-radius: 6px; display: inline-block;">
                         View Security Dashboard
                     </a>
@@ -223,8 +223,8 @@ class SecurityEmailNotifier:
             
             <!-- Footer -->
             <div style="text-align: center; padding: 20px; color: #6c757d; font-size: 14px;">
-                <p style="margin: 0;">This is an automated security notification from ChamaLink.</p>
-                <p style="margin: 5px 0 0 0;">© 2024 ChamaLink. All rights reserved.</p>
+                <p style="margin: 0;">This is an automated security notification from Bwire Finance Cloud.</p>
+                <p style="margin: 5px 0 0 0;">© 2024 Bwire Finance Cloud. All rights reserved.</p>
             </div>
             
         </body>
@@ -241,7 +241,7 @@ class SecurityEmailNotifier:
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>CRITICAL: Security Breach - ChamaLink</title>
+            <title>CRITICAL: Security Breach - Bwire Finance Cloud</title>
         </head>
         <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
             
@@ -314,16 +314,16 @@ class SecurityEmailNotifier:
                 <div style="background: #e2e3e5; border: 1px solid #d6d8db; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
                     <h4 style="margin: 0 0 15px 0; color: #383d41;">Emergency Contact Information</h4>
                     <p style="margin: 0; color: #383d41;">
-                        <strong>Security Team:</strong> security@chamalink.com<br>
+                        <strong>Security Team:</strong> security@bwirefinance.com<br>
                         <strong>Emergency Hotline:</strong> +254-700-000-000<br>
-                        <strong>CEO:</strong> ceo@chamalink.com
+                        <strong>CEO:</strong> ceo@bwirefinance.com
                     </p>
                 </div>
                 
                 <!-- Critical Action Button -->
                 <div style="text-align: center; padding: 20px; background: #721c24; border-radius: 8px;">
                     <h4 style="margin: 0 0 15px 0; color: white;">IMMEDIATE ACTION REQUIRED</h4>
-                    <a href="https://chamalink.com/security-dashboard" 
+                    <a href="https://bwirefinance.com/security-dashboard" 
                        style="background: #fff; color: #721c24; padding: 15px 40px; text-decoration: none; border-radius: 6px; display: inline-block; font-weight: bold;">
                         ACCESS SECURITY DASHBOARD NOW
                     </a>
@@ -334,7 +334,7 @@ class SecurityEmailNotifier:
             <!-- Footer -->
             <div style="text-align: center; padding: 20px; color: #721c24; font-size: 14px;">
                 <p style="margin: 0; font-weight: bold;">CRITICAL SECURITY ALERT - DO NOT IGNORE</p>
-                <p style="margin: 5px 0 0 0;">ChamaLink Security Monitoring System</p>
+                <p style="margin: 5px 0 0 0;">Bwire Finance Cloud Security Monitoring System</p>
             </div>
             
         </body>
@@ -351,7 +351,7 @@ class SecurityEmailNotifier:
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Suspicious Activity Alert - ChamaLink</title>
+            <title>Suspicious Activity Alert - Bwire Finance Cloud</title>
         </head>
         <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
             
@@ -406,7 +406,7 @@ class SecurityEmailNotifier:
                 
                 <!-- Action Button -->
                 <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                    <a href="https://chamalink.com/security-dashboard" 
+                    <a href="https://bwirefinance.com/security-dashboard" 
                        style="background: #fd7e14; color: white; padding: 12px 30px; text-decoration: none; border-radius: 6px; display: inline-block;">
                         Review Activity
                     </a>
@@ -416,7 +416,7 @@ class SecurityEmailNotifier:
             
             <!-- Footer -->
             <div style="text-align: center; padding: 20px; color: #6c757d; font-size: 14px;">
-                <p style="margin: 0;">ChamaLink Security Monitoring - Automated Alert</p>
+                <p style="margin: 0;">Bwire Finance Cloud Security Monitoring - Automated Alert</p>
             </div>
             
         </body>

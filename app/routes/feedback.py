@@ -1,5 +1,5 @@
 """
-Feedback routes for CHAMAlink
+Feedback routes for Bwire Finance Cloud
 Handles user feedback collection and management
 """
 

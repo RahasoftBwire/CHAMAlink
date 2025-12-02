@@ -12,8 +12,8 @@ class EmailService:
     def __init__(self):
         self.smtp_server = os.getenv('MAIL_SERVER', 'smtp.gmail.com')
         self.port = int(os.getenv('MAIL_PORT', '587'))
-        self.sender_email = os.getenv('MAIL_USERNAME', 'rahasoft.app@gmail.com')
-        self.sender_name = "ChamaLink Support"
+        self.sender_email = os.getenv('MAIL_USERNAME', 'chamalink.system@gmail.com')
+        self.sender_name = "Bwire Finance Cloud Support"
         self.password = os.getenv('MAIL_PASSWORD')
         self.use_tls = os.getenv('MAIL_USE_TLS', 'True').lower() == 'true'
         
@@ -25,13 +25,13 @@ class EmailService:
                 return False
                 
             message = MIMEMultipart("alternative")
-            message["Subject"] = f"[ChamaLink] {subject}"
+            message["Subject"] = f"[Bwire Finance Cloud] {subject}"
             message["From"] = f"{self.sender_name} <{self.sender_email}>"
             message["To"] = recipient_email
             message["Reply-To"] = self.sender_email
             
             # Add headers for better deliverability
-            message["X-Mailer"] = "ChamaLink Platform"
+            message["X-Mailer"] = "Bwire Finance Cloud Platform"
             message["X-Priority"] = "3"
             
             # Create text part if provided
@@ -95,7 +95,7 @@ class EmailService:
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Email Verification - ChamaLink</title>
+            <title>Email Verification - Bwire Finance Cloud</title>
             <style>
                 body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }}
                 .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}
@@ -110,14 +110,14 @@ class EmailService:
         <body>
             <div class="container">
                 <div class="header">
-                    <div class="logo">ChamaLink</div>
-                    <h1>Welcome to ChamaLink!</h1>
+                    <div class="logo">Bwire Finance Cloud</div>
+                    <h1>Welcome to Bwire Finance Cloud!</h1>
                     <p>Kenya's Premier Digital Chama Management Platform</p>
                 </div>
                 <div class="content">
                     <h2>Hello {user.full_name or user.username}!</h2>
                     
-                    <p>Thank you for joining ChamaLink! We're excited to help you transform your chama management experience.</p>
+                    <p>Thank you for joining Bwire Finance Cloud! We're excited to help you transform your chama management experience.</p>
                     
                     <p>To complete your registration and start using all our amazing features, please verify your email address by clicking the button below:</p>
                     
@@ -146,9 +146,9 @@ class EmailService:
                     <p>If you have any questions or need help getting started, our support team is here to help!</p>
                 </div>
                 <div class="footer">
-                    <p>This email was sent by ChamaLink - Kenya's Digital Chama Platform</p>
-                    <p>📧 Support: support@chamalink.com | 📱 WhatsApp: +254 700 000 000</p>
-                    <p>If you didn't create a ChamaLink account, please ignore this email.</p>
+                    <p>This email was sent by Bwire Finance Cloud - Kenya's Digital Chama Platform</p>
+                    <p>📧 Support: support@bwirefinance.com | 📱 WhatsApp: +254 700 000 000</p>
+                    <p>If you didn't create a Bwire Finance Cloud account, please ignore this email.</p>
                 </div>
             </div>
         </body>
@@ -156,11 +156,11 @@ class EmailService:
         """
         
         text_content = f"""
-        Welcome to ChamaLink - Kenya's Premier Digital Chama Management Platform!
+        Welcome to Bwire Finance Cloud - Kenya's Premier Digital Chama Management Platform!
         
         Hello {user.full_name or user.username},
         
-        Thank you for joining ChamaLink! To complete your registration and activate your account, please verify your email address.
+        Thank you for joining Bwire Finance Cloud! To complete your registration and activate your account, please verify your email address.
         
         VERIFY YOUR EMAIL: {verification_url}
         
@@ -176,13 +176,13 @@ class EmailService:
         - Generate professional reports
         
         Need Help?
-        Email: support@chamalink.com
+        Email: support@bwirefinance.com
         WhatsApp: +254 700 000 000
         
-        If you didn't create a ChamaLink account, please ignore this email.
+        If you didn't create a Bwire Finance Cloud account, please ignore this email.
         
         Best regards,
-        The ChamaLink Team
+        The Bwire Finance Cloud Team
         """
         
         return self.send_email(
@@ -202,7 +202,7 @@ class EmailService:
             text_content = f"""
             Hello {user.first_name or user.username},
             
-            You are attempting to log in to your ChamaLink account. Please use the verification code below to complete the login process.
+            You are attempting to log in to your Bwire Finance Cloud account. Please use the verification code below to complete the login process.
             
             Your Verification Code: {code}
             
@@ -211,12 +211,12 @@ class EmailService:
             Security Notice: If you did not request this code, please ignore this email and contact support immediately.
             
             Best regards,
-            ChamaLink Team
+            Bwire Finance Cloud Team
             """
             
             return self.send_email(
                 recipient_email=user.email,
-                subject="ChamaLink - Two-Factor Authentication Code",
+                subject="Bwire Finance Cloud - Two-Factor Authentication Code",
                 html_content=html_content,
                 text_content=text_content
             )
@@ -227,7 +227,7 @@ class EmailService:
     
     def send_subscription_expiry_warning(self, user, days_remaining):
         """Send subscription expiry warning"""
-        subject = f"ChamaLink Subscription Expires in {days_remaining} Days"
+        subject = f"Bwire Finance Cloud Subscription Expires in {days_remaining} Days"
         html_content = self._get_email_template('subscription_warning', {
             'user_name': user.full_name,
             'days_remaining': days_remaining,
@@ -239,7 +239,7 @@ class EmailService:
     
     def send_subscription_expired(self, user):
         """Send subscription expired notification"""
-        subject = "ChamaLink Subscription Expired"
+        subject = "Bwire Finance Cloud Subscription Expired"
         html_content = self._get_email_template('subscription_expired', {
             'user_name': user.full_name,
             'renewal_url': f"{os.getenv('BASE_URL', 'http://localhost:5000')}/subscription/renew"
@@ -249,7 +249,7 @@ class EmailService:
     
     def send_subscription_payment_confirmation(self, user, subscription, payment):
         """Send payment confirmation and subscription details"""
-        subject = "ChamaLink Subscription Payment Confirmed"
+        subject = "Bwire Finance Cloud Subscription Payment Confirmed"
         html_content = self._get_email_template('payment_confirmation', {
             'user_name': user.full_name,
             'plan_name': subscription.plan.name.title(),
@@ -280,7 +280,7 @@ class EmailService:
     
     def send_account_locked_notification(self, user):
         """Send account locked notification"""
-        subject = "ChamaLink Account Temporarily Locked"
+        subject = "Bwire Finance Cloud Account Temporarily Locked"
         html_content = self._get_email_template('account_locked', {
             'user_name': user.full_name,
             'unlock_time': user.locked_until.strftime('%B %d, %Y at %I:%M %p') if user.locked_until else "24 hours"
@@ -299,7 +299,7 @@ class EmailService:
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Password Reset - ChamaLink</title>
+                <title>Password Reset - Bwire Finance Cloud</title>
                 <style>
                     body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }}
                     .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}
@@ -315,14 +315,14 @@ class EmailService:
             <body>
                 <div class="container">
                     <div class="header">
-                        <div class="logo">ChamaLink</div>
+                        <div class="logo">Bwire Finance Cloud</div>
                         <h1>Password Reset Request</h1>
                         <p>Secure Password Recovery</p>
                     </div>
                     <div class="content">
                         <h2>Hello {user.full_name or user.username}!</h2>
                         
-                        <p>We received a request to reset the password for your ChamaLink account.</p>
+                        <p>We received a request to reset the password for your Bwire Finance Cloud account.</p>
                         
                         <p>If you requested this password reset, click the button below to create a new password:</p>
                         
@@ -354,8 +354,8 @@ class EmailService:
                         </ul>
                     </div>
                     <div class="footer">
-                        <p>This email was sent by ChamaLink - Kenya's Digital Chama Platform</p>
-                        <p>📧 Support: support@chamalink.com | 📱 WhatsApp: +254 700 000 000</p>
+                        <p>This email was sent by Bwire Finance Cloud - Kenya's Digital Chama Platform</p>
+                        <p>📧 Support: support@bwirefinance.com | 📱 WhatsApp: +254 700 000 000</p>
                         <p>For account security, this email was sent to: {user.email}</p>
                     </div>
                 </div>
@@ -364,11 +364,11 @@ class EmailService:
             """
             
             text_content = f"""
-            ChamaLink - Password Reset Request
+            Bwire Finance Cloud - Password Reset Request
             
             Hello {user.full_name or user.username},
             
-            We received a request to reset the password for your ChamaLink account.
+            We received a request to reset the password for your Bwire Finance Cloud account.
             
             RESET YOUR PASSWORD: {reset_url}
             
@@ -385,13 +385,13 @@ class EmailService:
             - Never share your password with anyone
             
             Need Help?
-            Email: support@chamalink.com
+            Email: support@bwirefinance.com
             WhatsApp: +254 700 000 000
             
             This email was sent to: {user.email}
             
             Best regards,
-            The ChamaLink Security Team
+            The Bwire Finance Cloud Security Team
             """
             
             return self.send_email(
@@ -423,12 +423,12 @@ class EmailService:
             <body>
                 <div class="email-container">
                     <div class="header">
-                        <h1>ChamaLink</h1>
+                        <h1>Bwire Finance Cloud</h1>
                         <p>Welcome to Kenya's Premier Chama Management Platform</p>
                     </div>
                     <div class="content">
                         <h2>Welcome, {{ user_name }}!</h2>
-                        <p>Thank you for joining ChamaLink. To complete your registration and secure your account, please verify your email address.</p>
+                        <p>Thank you for joining Bwire Finance Cloud. To complete your registration and secure your account, please verify your email address.</p>
                         <p>Click the button below to verify your email:</p>
                         <a href="{{ verification_url }}" class="button">Verify Email Address</a>
                         <p>If the button doesn't work, copy and paste this link into your browser:</p>
@@ -436,7 +436,7 @@ class EmailService:
                         <p>This verification link will expire in 24 hours for security reasons.</p>
                     </div>
                     <div class="footer">
-                        <p>&copy; 2025 ChamaLink. All rights reserved.</p>
+                        <p>&copy; 2025 Bwire Finance Cloud. All rights reserved.</p>
                     </div>
                 </div>
             </body>
@@ -463,14 +463,14 @@ class EmailService:
                     <div class="content">
                         <h2>Hello {{ user_name }},</h2>
                         <div class="warning">
-                            <strong>Your ChamaLink {{ plan_name }} subscription will expire in {{ days_remaining }} days.</strong>
+                            <strong>Your Bwire Finance Cloud {{ plan_name }} subscription will expire in {{ days_remaining }} days.</strong>
                         </div>
                         <p>To continue enjoying uninterrupted access to your chama management features, please renew your subscription.</p>
                         <a href="{{ renewal_url }}" class="button">Renew Subscription</a>
                         <p>Don't lose access to your important chama data and features!</p>
                     </div>
                     <div class="footer">
-                        <p>&copy; 2025 ChamaLink. All rights reserved.</p>
+                        <p>&copy; 2025 Bwire Finance Cloud. All rights reserved.</p>
                     </div>
                 </div>
             </body>
@@ -497,14 +497,14 @@ class EmailService:
                     <div class="content">
                         <h2>Hello {{ user_name }},</h2>
                         <div class="expired">
-                            <strong>Your ChamaLink subscription has expired.</strong>
+                            <strong>Your Bwire Finance Cloud subscription has expired.</strong>
                         </div>
                         <p>Your account access has been limited. To restore full functionality and access to your chama data, please renew your subscription immediately.</p>
                         <a href="{{ renewal_url }}" class="button">Renew Now</a>
                         <p>Your data is safe and will be restored once you renew your subscription.</p>
                     </div>
                     <div class="footer">
-                        <p>&copy; 2025 ChamaLink. All rights reserved.</p>
+                        <p>&copy; 2025 Bwire Finance Cloud. All rights reserved.</p>
                     </div>
                 </div>
             </body>
@@ -529,7 +529,7 @@ class EmailService:
                     </div>
                     <div class="content">
                         <h2>Hello {{ user_name }},</h2>
-                        <p>Your ChamaLink subscription payment has been successfully processed!</p>
+                        <p>Your Bwire Finance Cloud subscription payment has been successfully processed!</p>
                         <div class="details">
                             <h3>Subscription Details:</h3>
                             <p><strong>Plan:</strong> {{ plan_name }}</p>
@@ -538,10 +538,10 @@ class EmailService:
                             <p><strong>Expires On:</strong> {{ end_date }}</p>
                             <p><strong>Receipt Number:</strong> {{ receipt_number }}</p>
                         </div>
-                        <p>Thank you for choosing ChamaLink for your chama management needs!</p>
+                        <p>Thank you for choosing Bwire Finance Cloud for your chama management needs!</p>
                     </div>
                     <div class="footer">
-                        <p>&copy; 2025 ChamaLink. All rights reserved.</p>
+                        <p>&copy; 2025 Bwire Finance Cloud. All rights reserved.</p>
                     </div>
                 </div>
             </body>
@@ -567,7 +567,7 @@ class EmailService:
                     </div>
                     <div class="content">
                         <h2>Hello {{ admin_name }},</h2>
-                        <p>A new loan application requires your approval in ChamaLink.</p>
+                        <p>A new loan application requires your approval in Bwire Finance Cloud.</p>
                         <div class="loan-details">
                             <h3>Loan Application Details:</h3>
                             <p><strong>Applicant:</strong> {{ applicant_name }}</p>
@@ -581,7 +581,7 @@ class EmailService:
                         <p>Please provide your name and password to complete the approval process.</p>
                     </div>
                     <div class="footer">
-                        <p>&copy; 2025 ChamaLink. All rights reserved.</p>
+                        <p>&copy; 2025 Bwire Finance Cloud. All rights reserved.</p>
                     </div>
                 </div>
             </body>
@@ -607,7 +607,7 @@ class EmailService:
                     <div class="content">
                         <h2>Hello {{ user_name }},</h2>
                         <div class="security">
-                            <strong>Your ChamaLink account has been temporarily locked due to multiple failed login attempts.</strong>
+                            <strong>Your Bwire Finance Cloud account has been temporarily locked due to multiple failed login attempts.</strong>
                         </div>
                         <p>For security reasons, your account will be automatically unlocked at {{ unlock_time }}.</p>
                         <p>If you didn't attempt to log in, please contact our support team immediately.</p>
@@ -619,7 +619,7 @@ class EmailService:
                         </ul>
                     </div>
                     <div class="footer">
-                        <p>&copy; 2025 ChamaLink. All rights reserved.</p>
+                        <p>&copy; 2025 Bwire Finance Cloud. All rights reserved.</p>
                     </div>
                 </div>
             </body>

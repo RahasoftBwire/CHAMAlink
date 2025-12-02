@@ -31,13 +31,13 @@ def create_app():
     app = Flask(__name__)
 
     # 🔐 Configuration
-    app.config['SECRET_KEY'] = os.getenv("SECRET_KEY", "chamalink-secret-key")
+    app.config['SECRET_KEY'] = os.getenv("SECRET_KEY", "bwirefinance-secret-key")
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQLALCHEMY_DATABASE_URI") or os.getenv("DATABASE_URL")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['TEMPLATES_AUTO_RELOAD'] = True  # Force template reloading
     
     # JWT Configuration for mobile API
-    app.config['JWT_SECRET_KEY'] = os.getenv("JWT_SECRET_KEY", "chamalink-jwt-secret")
+    app.config['JWT_SECRET_KEY'] = os.getenv("JWT_SECRET_KEY", "bwirefinance-jwt-secret")
     app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=30)
     
     # Session configuration for better login persistence
@@ -45,6 +45,8 @@ def create_app():
     app.config['SESSION_COOKIE_HTTPONLY'] = True
     app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
     app.config['PERMANENT_SESSION_LIFETIME'] = 1800  # 30 minutes
+    app.config['SESSION_TYPE'] = 'filesystem'  # Use filesystem sessions
+    app.config['SESSION_REFRESH_EACH_REQUEST'] = True  # Refresh session on each request
 
     # 📧 Email configuration
     app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER', 'smtp.gmail.com')
@@ -53,8 +55,15 @@ def create_app():
     app.config['MAIL_USE_SSL'] = os.getenv('MAIL_USE_SSL', 'False').lower() == 'true'
     app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
     app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
-    app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER', 'noreply@chamalink.com')
+    app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER', 'chamalink.system@gmail.com')
 
+    # CSRF Configuration
+    app.config['WTF_CSRF_ENABLED'] = True
+    app.config['WTF_CSRF_TIME_LIMIT'] = None  # No time limit for CSRF tokens
+    app.config['WTF_CSRF_CHECK_DEFAULT'] = False  # Don't check CSRF by default for all routes
+    app.config['WTF_CSRF_METHODS'] = ['POST', 'PUT', 'PATCH', 'DELETE']  # Methods to protect
+    app.config['WTF_CSRF_SSL_STRICT'] = False  # Allow CSRF in development without HTTPS
+    
     # 📦 Initialize extensions
     db.init_app(app)
     migrate.init_app(app, db)
@@ -98,6 +107,14 @@ def create_app():
     def inject_csrf_token():
         from flask_wtf.csrf import generate_csrf
         return {'csrf_token': generate_csrf}
+    
+    # Handle CSRF errors gracefully
+    @app.errorhandler(400)
+    def handle_csrf_error(e):
+        if 'CSRF' in str(e):
+            flash('Your session has expired. Please try again.', 'warning')
+            return redirect(request.url if request.url else url_for('main.home'))
+        return e
 
     # 🔗 Register Blueprints
     from app.auth.routes import auth as auth_blueprint
@@ -163,6 +180,11 @@ def create_app():
     app.register_blueprint(mobile_api)
     app.register_blueprint(integrations_bp)
     app.register_blueprint(compliance_bp)
+    
+    # Exempt API routes from CSRF protection
+    csrf.exempt(api_bp)
+    csrf.exempt(mobile_api)
+    csrf.exempt(mpesa_bp)  # M-Pesa callbacks need to be exempt
 
     # 🌍 Initialize internationalization
     from app.utils.internationalization import get_current_language, get_current_theme, get_current_font, load_translations

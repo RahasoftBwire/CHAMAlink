@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Demo - See CHAMAlink in Action{% endblock %}
+{% block title %}Demo - See Bwire Finance Cloud in Action{% endblock %}
 
 {% block content %}
 <div class="demo-page">
@@ -10,8 +10,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="text-center mb-4">
-                        <h1 class="display-4 text-primary mb-3">See CHAMAlink in Action</h1>
-                        <p class="lead text-muted">Watch how CHAMAlink transforms communities from individual struggle to collective success</p>
+                        <h1 class="display-4 text-primary mb-3">See Bwire Finance Cloud in Action</h1>
+                        <p class="lead text-muted">Watch how Bwire Finance Cloud transforms communities from individual struggle to collective success</p>
                     </div>
                     
                     <!-- Video Player -->
@@ -22,7 +22,7 @@
                                 <div class="text-center">
                                     <i class="fas fa-play-circle fa-5x text-primary mb-3"></i>
                                     <h4>Demo Video Coming Soon!</h4>
-                                    <p class="text-muted">We're creating an amazing animation showing the CHAMAlink journey</p>
+                                    <p class="text-muted">We're creating an amazing animation showing the Bwire Finance Cloud journey</p>
                                     <div class="mt-4">
                                         <a href="/register" class="btn btn-primary btn-lg me-3">
                                             <i class="fas fa-rocket me-2"></i>Start Free Trial
@@ -37,8 +37,8 @@
                             <!-- Actual video element (hidden until video is ready) -->
                             <video id="demo-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none;" 
                                    controls poster="/static/images/video-thumbnail.jpg">
-                                <source src="/static/videos/chamalink-demo.mp4" type="video/mp4">
-                                <p>Your browser doesn't support HTML5 video. <a href="/static/videos/chamalink-demo.mp4">Download the video</a> instead.</p>
+                                <source src="/static/videos/bwirefinance-demo.mp4" type="video/mp4">
+                                <p>Your browser doesn't support HTML5 video. <a href="/static/videos/bwirefinance-demo.mp4">Download the video</a> instead.</p>
                             </video>
                         </div>
                         
@@ -46,7 +46,7 @@
                         <div class="video-overlay position-absolute bottom-0 start-0 w-100 p-3 bg-gradient" style="background: linear-gradient(transparent, rgba(0,0,0,0.6));">
                             <div class="d-flex justify-content-between align-items-center text-white">
                                 <div>
-                                    <h6 class="mb-1">The CHAMAlink Journey</h6>
+                                    <h6 class="mb-1">The Bwire Finance Cloud Journey</h6>
                                     <small>From individual struggle to community success</small>
                                 </div>
                                 <div class="video-actions">
@@ -66,7 +66,7 @@
                         <div class="col-md-8 mx-auto text-center">
                             <p class="text-muted">
                                 <i class="fas fa-clock me-2"></i>Duration: 90 seconds &nbsp;|&nbsp;
-                                <i class="fas fa-users me-2"></i>Featuring real CHAMAlink success stories &nbsp;|&nbsp;
+                                <i class="fas fa-users me-2"></i>Featuring real Bwire Finance Cloud success stories &nbsp;|&nbsp;
                                 <i class="fas fa-globe me-2"></i>Available in English & Swahili
                             </p>
                         </div>
@@ -111,7 +111,7 @@
                             </div>
                             <div>
                                 <h5>Digital Transformation</h5>
-                                <p class="text-muted">CHAMAlink brings traditional chamas into the digital age with easy-to-use tools for contributions, loans, and financial tracking.</p>
+                                <p class="text-muted">Bwire Finance Cloud brings traditional chamas into the digital age with easy-to-use tools for contributions, loans, and financial tracking.</p>
                             </div>
                         </div>
                         
@@ -135,7 +135,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="mb-4">Ready to Start Your CHAMAlink Journey?</h2>
+                    <h2 class="mb-4">Ready to Start Your Bwire Finance Cloud Journey?</h2>
                     <p class="lead text-muted mb-4">Join thousands of Kenyans who have transformed their chamas with our digital platform.</p>
                     
                     <div class="cta-buttons">
@@ -189,7 +189,7 @@
 }
 
 .hero-video-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
     color: white;
 }
 
@@ -251,7 +251,7 @@
 }
 
 .video-wrapper {
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #1e3a8a, #1e40af);
 }
 
 #video-placeholder {
@@ -274,12 +274,12 @@
     top: 60px;
     bottom: 60px;
     width: 2px;
-    background: linear-gradient(to bottom, #667eea, #764ba2);
+    background: linear-gradient(to bottom, #1e3a8a, #1e40af);
     opacity: 0.3;
 }
 
 .cta-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
     color: white;
 }
 
@@ -383,7 +383,7 @@ function toggleFullscreen() {
 // Social sharing functions
 function shareWhatsApp() {
     const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent('Check out this amazing CHAMAlink demo video! See how digital chamas are transforming communities.');
+    const text = encodeURIComponent('Check out this amazing Bwire Finance Cloud demo video! See how digital chamas are transforming communities.');
     window.open(`https://wa.me/?text=${text} ${url}`, '_blank');
 }
 
@@ -394,7 +394,7 @@ function shareFacebook() {
 
 function shareTwitter() {
     const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent('Amazing CHAMAlink demo showing how digital chamas transform communities! 🚀 #CHAMAlink #DigitalChama #FinancialInclusion');
+    const text = encodeURIComponent('Amazing Bwire Finance Cloud demo showing how digital chamas transform communities! 🚀 #Bwire Finance Cloud #DigitalChama #FinancialInclusion');
     window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
 }
 
@@ -407,8 +407,8 @@ function copyLink() {
 function shareVideo() {
     if (navigator.share) {
         navigator.share({
-            title: 'CHAMAlink Demo Video',
-            text: 'Check out this amazing CHAMAlink demo video!',
+            title: 'Bwire Finance Cloud Demo Video',
+            text: 'Check out this amazing Bwire Finance Cloud demo video!',
             url: window.location.href
         });
     } else {
@@ -437,3 +437,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 {% endblock %}
+

@@ -34,7 +34,7 @@ def send_chama_email(to_email, subject, template, **kwargs):
         return False, str(e)
 
 def send_system_email(to_email, subject, template, **kwargs):
-    """Send system email with ChamaLink branding"""
+    """Send system email with Bwire Finance Cloud branding"""
     try:
         # Render the email template
         html_content = render_template(template, **kwargs)
@@ -44,7 +44,7 @@ def send_system_email(to_email, subject, template, **kwargs):
             subject=subject,
             recipients=[to_email],
             html=html_content,
-            sender=f"ChamaLink <{current_app.config.get('MAIL_DEFAULT_SENDER')}>"
+            sender=f"Bwire Finance Cloud <{current_app.config.get('MAIL_DEFAULT_SENDER')}>"
         )
         
         # Send email

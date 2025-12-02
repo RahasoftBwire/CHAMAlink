@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Help & Support - ChamaLink{% endblock %}
+{% block title %}Help & Support - Bwire Finance Cloud{% endblock %}
 
 {% block content %}
 <div class="container-fluid py-4">
@@ -10,7 +10,7 @@
                 <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">
                         <i class="fas fa-robot me-2"></i>
-                        LeeBot - ChamaLink Assistant
+                        LeeBot - Bwire Finance Cloud Assistant
                     </h5>
                     <div class="d-flex align-items-center">
                         <span id="status-indicator" class="badge bg-success me-2">
@@ -36,7 +36,7 @@
                                             <strong>LeeBot</strong>
                                             <div class="text-muted small">Just now</div>
                                             <div class="mt-2">
-                                                👋 Hello! I'm LeeBot, your intelligent ChamaLink assistant.
+                                                👋 Hello! I'm LeeBot, your intelligent Bwire Finance Cloud assistant.
                                                 <br><br>
                                                 I understand your questions and can help you with:
                                                 <ul class="mb-2 mt-2">
@@ -124,11 +124,11 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="d-grid">
-                                        <a href="mailto:rahasoft.app@gmail.com?subject=ChamaLink Support" class="btn btn-outline-primary">
+                                        <a href="mailto:chamalink.system@gmail.com?subject=Bwire Finance Cloud Support" class="btn btn-outline-primary">
                                             <i class="fas fa-envelope me-2"></i>
                                             <div>
                                                 <div class="fw-bold">Send Email</div>
-                                                <small class="text-muted">rahasoft.app@gmail.com</small>
+                                                <small class="text-muted">chamalink.system@gmail.com</small>
                                             </div>
                                         </a>
                                     </div>
@@ -180,13 +180,13 @@
 }
 
 .user-message .message-content {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
     color: white;
     border: none !important;
 }
 
 .bot-message .avatar {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
 }
 
 .typing-indicator {
@@ -277,7 +277,7 @@ class LeeBot {
 I'm LeeBot, and I'm genuinely excited to help you today! I've been chatting with chama members all day, and every conversation teaches me something new.
 
 I noticed you're here - are you:
-� New to ChamaLink and want to explore?
+� New to Bwire Finance Cloud and want to explore?
 💡 Looking for specific help with your chama?
 🤔 Just browsing and seeing what we're about?
 
@@ -293,7 +293,7 @@ What's happening in your chama world today?`,
 
                     `👋 **Hi there! Perfect timing!** 
 
-I was just helping another chama member figure out their M-Pesa integration, and it got me thinking about all the creative ways people are using ChamaLink.
+I was just helping another chama member figure out their M-Pesa integration, and it got me thinking about all the creative ways people are using Bwire Finance Cloud.
 
 What brings you here today? I'm ready to put my full attention on helping you succeed with your chama!`
                 ],
@@ -340,7 +340,7 @@ Starting with digital chama management can feel like learning a new language som
 Instead of trying to understand everything at once, what if we just focus on ONE thing that would make your life easier right now?
 
 For example:
-• "I just want to know if ChamaLink is right for my small group"
+• "I just want to know if Bwire Finance Cloud is right for my small group"
 • "I need to understand the costs before I commit"
 • "I want to see how the M-Pesa thing actually works"
 • "I'm curious about security - is my money safe?"
@@ -360,7 +360,7 @@ Instead of me overwhelming you with features and technical details, why don't yo
 • What are you trying to achieve together?
 • What's your biggest concern or worry about managing money digitally?
 
-Once I understand YOUR specific situation, I can explain exactly how ChamaLink would work for YOU - not just in general terms, but for your actual group with your actual goals.
+Once I understand YOUR specific situation, I can explain exactly how Bwire Finance Cloud would work for YOU - not just in general terms, but for your actual group with your actual goals.
 
 **Does that sound more helpful?** What's your group's story?`
                 ],
@@ -404,12 +404,12 @@ What's the urgent problem you're facing?`
             // Chama Management
             'chama_creation': {
                 keywords: ['create chama', 'start chama', 'new chama', 'setup chama', 'register chama', 'how to create'],
-                response: `🏦 **Creating a Chama on ChamaLink**
+                response: `🏦 **Creating a Chama on Bwire Finance Cloud**
 
 To create your chama:
 
 **Step 1: Sign Up**
-• Visit ChamaLink.co.ke and click "Get Started"
+• Visit Bwire Finance Cloud.co.ke and click "Get Started"
 • Choose your subscription plan (we recommend starting with the free trial)
 • Complete your account registration
 
@@ -466,7 +466,7 @@ Need help with specific member management tasks?`,
 
             'subscription_plans': {
                 keywords: ['plans', 'pricing', 'cost', 'subscription', 'how much', 'price', 'basic', 'classic', 'advanced'],
-                response: `💰 **ChamaLink Subscription Plans**
+                response: `💰 **Bwire Finance Cloud Subscription Plans**
 
 **🎯 Basic Plan - KES 200/month**
 • Perfect for small chamas (up to 20 members)
@@ -501,7 +501,7 @@ Which plan interests you most?`,
 
             'mpesa_integration': {
                 keywords: ['mpesa', 'm-pesa', 'payment', 'mobile money', 'safaricom', 'pay', 'paybill'],
-                response: `📱 **M-Pesa Integration with ChamaLink**
+                response: `📱 **M-Pesa Integration with Bwire Finance Cloud**
 
 **How it Works:**
 • Your chama gets a dedicated M-Pesa paybill or till number
@@ -773,11 +773,11 @@ Is there anything specific you'd like me to let the agent know about?`,
 
     // Get last topic from memory
     getLastTopic() {
-        if (this.conversationMemory.size === 0) return 'ChamaLink features';
+        if (this.conversationMemory.size === 0) return 'Bwire Finance Cloud features';
         
         const contexts = Array.from(this.conversationMemory.values());
         const lastContext = contexts[contexts.length - 1];
-        return lastContext ? lastContext.topic : 'ChamaLink features';
+        return lastContext ? lastContext.topic : 'Bwire Finance Cloud features';
     }
 
     // Personalize response based on conversation history
@@ -927,20 +927,20 @@ Is there anything specific you'd like me to let the agent know about?`,
         // Specific guidance based on intent
         if (advancedIntent.type === 'comparison') {
             fallbackResponse += `📊 **For comparisons**, I can help you understand:
-• ChamaLink vs traditional chama management
+• Bwire Finance Cloud vs traditional chama management
 • Different subscription plans (Basic vs Classic vs Advanced)
 • Payment methods and their benefits
 • Feature comparisons between plans
 
-**Try asking**: "Compare the Basic and Classic plans" or "What makes ChamaLink better than Excel?"`;
+**Try asking**: "Compare the Basic and Classic plans" or "What makes Bwire Finance Cloud better than Excel?"`;
         } else if (advancedIntent.type === 'feature_inquiry') {
             fallbackResponse += `🔧 **For feature questions**, I can explain:
-• All ChamaLink capabilities in detail
+• All Bwire Finance Cloud capabilities in detail
 • How specific features work
 • Which plan includes which features
 • Integration possibilities
 
-**Try asking**: "What features does ChamaLink have?" or "Can I export my data?"`;
+**Try asking**: "What features does Bwire Finance Cloud have?" or "Can I export my data?"`;
         } else if (advancedIntent.type === 'concern') {
             fallbackResponse += `🛡️ **For security and trust concerns**, I can address:
 • Data security and encryption
@@ -953,7 +953,7 @@ Is there anything specific you'd like me to let the agent know about?`,
             fallbackResponse += `💡 **Here are some popular topics I can help with:**
 
 🏦 **Getting Started**: "How do I create a chama?"
-💰 **Pricing**: "What does ChamaLink cost?"
+💰 **Pricing**: "What does Bwire Finance Cloud cost?"
 👥 **Members**: "How do I add members to my chama?"
 📱 **Payments**: "How does M-Pesa integration work?"
 📊 **Reports**: "What reports can I generate?"
@@ -1038,7 +1038,7 @@ Is there anything specific you'd like me to let the agent know about?`,
             ],
             'mpesa_integration': [
                 'How long does M-Pesa setup take?',
-                'Is my money secure with ChamaLink?',
+                'Is my money secure with Bwire Finance Cloud?',
                 'Can members contribute from different banks?'
             ],
             'member_management': [
@@ -1049,7 +1049,7 @@ Is there anything specific you'd like me to let the agent know about?`,
         };
 
         return suggestions[currentTopic] || [
-            'Tell me about ChamaLink features',
+            'Tell me about Bwire Finance Cloud features',
             'How secure is the platform?',
             'Can you help me get started?'
         ];
@@ -1065,7 +1065,7 @@ Is there anything specific you'd like me to let the agent know about?`,
             'reports_analytics': 'Would you like to see what insights you can get from our analytics?'
         };
 
-        return followUps[topic] || 'Is there anything specific about ChamaLink you\'d like to know more about?';
+        return followUps[topic] || 'Is there anything specific about Bwire Finance Cloud you\'d like to know more about?';
     }
 
     // Smart response with suggestions
@@ -1121,7 +1121,7 @@ Is there anything specific you'd like me to let the agent know about?`,
         
         // Add personalization based on conversation flow
         if (this.context.messageCount > 5) {
-            response += '\n\n🤝 *I notice you\'re really exploring ChamaLink! Would you like me to connect you with our team for a personalized demo?*';
+            response += '\n\n🤝 *I notice you\'re really exploring Bwire Finance Cloud! Would you like me to connect you with our team for a personalized demo?*';
         }
         
         return response;
@@ -1141,7 +1141,7 @@ Let me suggest some popular topics I can definitely assist you with:
 **Just ask me naturally!** For example:
 • "Can you help me set up my first chama?"
 • "What payment methods do you support?"
-• "How much does ChamaLink cost?"
+• "How much does Bwire Finance Cloud cost?"
 
 *What would you like to know more about?*`,
 
@@ -1150,7 +1150,7 @@ Let me suggest some popular topics I can definitely assist you with:
 Here are some things I'm really good at explaining:
 
 🚀 **Getting Started**: Complete setup guides and walkthroughs
-� **Feature Explanations**: Detailed information about all ChamaLink features
+� **Feature Explanations**: Detailed information about all Bwire Finance Cloud features
 💳 **Pricing & Plans**: Help you choose the right subscription
 �️ **Technical Support**: Troubleshooting and problem-solving
 📈 **Best Practices**: Tips for successful chama management
@@ -1198,11 +1198,11 @@ Here are some things I'm really good at explaining:
                 return "🤝 **Agent Notified!**\n\nI've sent your conversation to our support team. You should hear back within 2 hours during business hours.\n\nFor immediate assistance:\n📞 **Call**: +254 724 828 685\n💬 **WhatsApp**: +254 724 828 685";
             } else {
                 console.error('Agent help request failed:', response.status, response.statusText);
-                return "I'm having trouble connecting to our support team right now. Please contact us directly at support@chamalink.co.ke or call +254 700 000 000.";
+                return "I'm having trouble connecting to our support team right now. Please contact us directly at support@bwirefinance.co.ke or call +254 700 000 000.";
             }
         } catch (error) {
             console.error('Error escalating to agent:', error);
-            return "I'm having trouble connecting to our support team right now. Please contact us directly at support@chamalink.co.ke or call +254 700 000 000.";
+            return "I'm having trouble connecting to our support team right now. Please contact us directly at support@bwirefinance.co.ke or call +254 700 000 000.";
         }
     }
 }
@@ -1496,3 +1496,4 @@ document.querySelectorAll('.quick-topic').forEach(button => {
 }); // End of DOMContentLoaded
 </script>
 {% endblock %}
+

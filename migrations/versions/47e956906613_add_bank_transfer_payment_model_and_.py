@@ -38,7 +38,8 @@ def upgrade():
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['plan_id'], ['subscription_plans.id'], ),
-    sa.ForeignKeyConstraint(['pricing_id'], ['subscription_plan_pricing.id'], ),
+    # Commented out: subscription_plan_pricing table doesn't exist
+    # sa.ForeignKeyConstraint(['pricing_id'], ['subscription_plan_pricing.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['verified_by'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

@@ -7,9 +7,9 @@ import sqlite3
 import requests
 
 def check_system_readiness():
-    """Comprehensive CHAMAlink system readiness assessment"""
+    """Comprehensive Bwire Finance Cloud system readiness assessment"""
     
-    print("🔍 CHAMAlink System Readiness Assessment")
+    print("🔍 Bwire Finance Cloud System Readiness Assessment")
     print("=" * 60)
     print(f"Assessment Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 60)
@@ -56,12 +56,12 @@ def check_system_readiness():
     
     try:
         # Check if database file exists
-        if os.path.exists('instance/chamalink.db'):
+        if os.path.exists('instance/bwirefinance.db'):
             print("✅ Database file exists")
             db_score += 1
             
             # Check database tables
-            conn = sqlite3.connect('instance/chamalink.db')
+            conn = sqlite3.connect('instance/bwirefinance.db')
             cursor = conn.cursor()
             
             required_tables = ['users', 'chamas', 'chama_members', 'contributions', 'transactions', 'subscriptions']
@@ -308,7 +308,7 @@ def check_system_readiness():
     print(f"\n🎯 RECOMMENDATION: {readiness_status}")
     
     if overall_percentage >= 85:
-        print("Your CHAMAlink system is ready for production deployment!")
+        print("Your Bwire Finance Cloud system is ready for production deployment!")
     elif overall_percentage >= 70:
         print("Your system needs minor fixes before production deployment.")
     else:

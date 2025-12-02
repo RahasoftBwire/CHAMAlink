@@ -227,7 +227,7 @@ def process_direct_payment():
             # Initiate M-Pesa STK push
             from app.utils.mpesa import initiate_subscription_payment
             
-            description = f"ChamaLink {plan.name.title()} Plan - {pricing.months}M"
+            description = f"Bwire Finance Cloud {plan.name.title()} Plan - {pricing.months}M"
             response = initiate_subscription_payment(
                 phone_number=phone_number,
                 amount=int(pricing.total_price),
@@ -584,7 +584,7 @@ def process_extension():
             # Initiate M-Pesa STK push for extension
             from app.utils.mpesa import initiate_subscription_payment
             
-            description = f"ChamaLink Extension - {pricing.months}M"
+            description = f"Bwire Finance Cloud Extension - {pricing.months}M"
             response = initiate_subscription_payment(
                 phone_number=phone_number,
                 amount=int(pricing.total_price),

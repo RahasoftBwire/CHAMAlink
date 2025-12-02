@@ -33,7 +33,7 @@ def setup():
     totp = pyotp.TOTP(twofa.secret_key)
     qr_uri = totp.provisioning_uri(
         name=current_user.email,
-        issuer_name="ChamaLink"
+        issuer_name="Bwire Finance Cloud"
     )
     
     # Generate QR code image

@@ -8,7 +8,7 @@
             <!-- Header -->
             <div class="text-center mb-5">
                 <h1 class="display-4">🔗 API Developer Portal</h1>
-                <p class="lead text-muted">Build powerful integrations with CHAMAlink's comprehensive API platform</p>
+                <p class="lead text-muted">Build powerful integrations with Bwire Finance Cloud's comprehensive API platform</p>
                 <div class="badge bg-warning text-dark fs-6 mb-3">Developer Preview</div>
             </div>
 
@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <h3 class="card-title">🚀 Getting Started</h3>
                     <p class="card-text">
-                        CHAMAlink API enables developers to integrate chama management capabilities into their applications.
+                        Bwire Finance Cloud API enables developers to integrate chama management capabilities into their applications.
                         Access member data, transaction records, meeting schedules, and more through our RESTful API.
                     </p>
                     
@@ -115,7 +115,7 @@ headers = {
 
 # Get all chamas
 response = requests.get(
-    'https://api.chamalink.com/v1/chamas',
+    'https://api.bwirefinance.com/v1/chamas',
     headers=headers
 )
 
@@ -132,7 +132,7 @@ transaction_data = {
 }
 
 response = requests.post(
-    'https://api.chamalink.com/v1/transactions',
+    'https://api.bwirefinance.com/v1/transactions',
     headers=headers,
     json=transaction_data
 )
@@ -174,7 +174,7 @@ print(f"Transaction created: {response.json()}")</code></pre>
                 <div class="card-body">
                     <h3 class="card-title">👥 Developer Community</h3>
                     <p class="card-text">
-                        Join our growing community of developers building innovative solutions with CHAMAlink API.
+                        Join our growing community of developers building innovative solutions with Bwire Finance Cloud API.
                     </p>
                     
                     <div class="row">
@@ -254,3 +254,4 @@ function showComingSoonModal(feature) {
 }
 </script>
 {% endblock %}
+

@@ -1,7 +1,7 @@
 """
 Advanced Analytics Dashboard
 ==========================
-Business intelligence and predictive analytics for CHAMAlink
+Business intelligence and predictive analytics for Bwire Finance Cloud
 """
 
 from flask import Blueprint, render_template, request, jsonify, flash

@@ -569,13 +569,13 @@ function downloadBackupCodes() {
     const codes = Array.from(document.querySelectorAll('#backupCodesList .font-monospace'))
         .map(el => el.textContent);
     
-    const content = `ChamaLink Backup Codes\n\nSave these codes in a safe place. Each code can only be used once.\n\n${codes.join('\n')}\n\nGenerated on: ${new Date().toLocaleString()}`;
+    const content = `Bwire Finance Cloud Backup Codes\n\nSave these codes in a safe place. Each code can only be used once.\n\n${codes.join('\n')}\n\nGenerated on: ${new Date().toLocaleString()}`;
     
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'chamalink-backup-codes.txt';
+    a.download = 'bwirefinance-backup-codes.txt';
     a.click();
     URL.revokeObjectURL(url);
 }
@@ -598,3 +598,4 @@ function showAlert(type, message) {
 }
 </script>
 {% endblock %}
+

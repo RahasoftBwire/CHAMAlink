@@ -20,7 +20,7 @@ def subscription_required(f):
         
         subscription = current_user.current_subscription
         if not subscription or not subscription.is_active:
-            flash('Your free trial has expired. Please upgrade to continue using ChamaLink.', 'warning')
+            flash('Your free trial has expired. Please upgrade to continue using Bwire Finance Cloud.', 'warning')
             return redirect(url_for('subscription.plans'))
         
         return f(*args, **kwargs)

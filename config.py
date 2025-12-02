@@ -12,7 +12,7 @@ class Config:
     MPESA_CONSUMER_SECRET = os.environ.get('MPESA_CONSUMER_SECRET') or 'your-consumer-secret'
     MPESA_BUSINESS_SHORT_CODE = os.environ.get('MPESA_BUSINESS_SHORT_CODE') or '174379'
     MPESA_PASSKEY = os.environ.get('MPESA_PASSKEY') or 'your-passkey'
-    MPESA_CALLBACK_URL = os.environ.get('MPESA_CALLBACK_URL') or 'https://chamalink.com/api/mpesa/callback'
+    MPESA_CALLBACK_URL = os.environ.get('MPESA_CALLBACK_URL') or 'https://bwirefinance.cloud/api/mpesa/callback'
     MPESA_ENVIRONMENT = os.environ.get('MPESA_ENVIRONMENT') or 'sandbox'  # sandbox or production
     
     # Email Configuration
@@ -27,8 +27,8 @@ class Config:
     SMTP_PORT = int(os.environ.get('SMTP_PORT') or 587)
     SMTP_USERNAME = os.environ.get('SMTP_USERNAME') or os.environ.get('MAIL_USERNAME')
     SMTP_PASSWORD = os.environ.get('SMTP_PASSWORD') or os.environ.get('MAIL_PASSWORD')
-    SECURITY_ADMIN_EMAILS = os.environ.get('SECURITY_ADMIN_EMAILS', 'admin@chamalink.com,security@chamalink.com').split(',')
-    FROM_EMAIL = os.environ.get('FROM_EMAIL') or 'noreply@chamalink.com'
+    SECURITY_ADMIN_EMAILS = os.environ.get('SECURITY_ADMIN_EMAILS', 'admin@bwirefinance.cloud,security@bwirefinance.cloud').split(',')
+    FROM_EMAIL = os.environ.get('FROM_EMAIL') or 'noreply@bwirefinance.cloud'
     
     # Session Configuration
     PERMANENT_SESSION_LIFETIME = timedelta(hours=24)
@@ -45,13 +45,13 @@ class DevelopmentConfig(Config):
     """Development configuration"""
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-        'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'instance', 'chamalink.db')
+        'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'instance', 'bwirefinance.db')
 
 class ProductionConfig(Config):
     """Production configuration"""
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'instance', 'chamalink.db')
+        'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'instance', 'bwirefinance.db')
 
 class TestingConfig(Config):
     """Testing configuration"""

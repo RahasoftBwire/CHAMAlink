@@ -301,7 +301,7 @@ def process_whatsapp_message(message):
         else:
             # Send help message
             send_whatsapp_message(phone_number, 
-                "Welcome to CHAMAlink! Available commands:\n"
+                "Welcome to Bwire Finance Cloud! Available commands:\n"
                 "/balance - Check your balance\n"
                 "/meetings - View upcoming meetings\n"
                 "/help - Show this help message"

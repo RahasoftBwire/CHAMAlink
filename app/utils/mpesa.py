@@ -12,7 +12,7 @@ class MpesaAPI:
         self.consumer_secret = os.getenv('MPESA_CONSUMER_SECRET')
         self.business_short_code = os.getenv('MPESA_BUSINESS_SHORT_CODE', '174379')
         self.passkey = os.getenv('MPESA_PASSKEY')
-        self.callback_url = os.getenv('MPESA_CALLBACK_URL', 'https://chamalink.com/api/mpesa/callback')
+        self.callback_url = os.getenv('MPESA_CALLBACK_URL', 'https://bwirefinance.com/api/mpesa/callback')
         self.environment = os.getenv('MPESA_ENVIRONMENT', 'sandbox')
         
         # Try to get from Flask config if available and env vars are not set

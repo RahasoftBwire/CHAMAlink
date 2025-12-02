@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Choose Payment Method - ChamaLink{% endblock %}
+{% block title %}Choose Payment Method - Bwire Finance Cloud{% endblock %}
 
 {% block content %}
 <div class="container py-5">
@@ -166,7 +166,7 @@
                         <div class="col-md-6">
                             <p class="mb-1"><strong>Amount:</strong> KES {{ "{:,.0f}".format(pricing.total_price or 0) }}</p>
                             <p class="mb-1"><strong>Reference:</strong> {{ plan.name|upper }}-{{ current_user.id }}</p>
-                            <p class="mb-0"><strong>Name:</strong> ChamaLink Ltd</p>
+                            <p class="mb-0"><strong>Name:</strong> Bwire Finance Cloud Ltd</p>
                         </div>
                     </div>
                 </div>
@@ -392,3 +392,4 @@ document.querySelectorAll('.payment-method-card').forEach(card => {
 }
 </style>
 {% endblock %}
+

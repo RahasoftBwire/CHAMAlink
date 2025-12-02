@@ -116,7 +116,7 @@ sms_service = SMSService()
 
 def send_2fa_code_sms(phone_number, code):
     """Send 2FA code via SMS"""
-    message = f"Your ChamaLink verification code is: {code}. This code expires in 10 minutes."
+    message = f"Your Bwire Finance Cloud verification code is: {code}. This code expires in 10 minutes."
     return sms_service.send_sms(phone_number, message)
 
 def send_loan_approval_sms(user, chama, loan_amount):
@@ -125,7 +125,7 @@ def send_loan_approval_sms(user, chama, loan_amount):
 Dear {user.first_name},
 Your loan of KES {loan_amount:,.2f} from {chama.name} has been approved! 
 Funds will be disbursed to your M-Pesa shortly.
-- ChamaLink
+- Bwire Finance Cloud
 """.strip()
     
     return sms_service.send_sms(user.phone, message)
@@ -135,8 +135,8 @@ def send_penalty_assignment_sms(user, chama, penalty_type, amount):
     message = f"""
 Dear {user.first_name},
 A penalty of KES {amount:,.2f} for {penalty_type} has been assigned to you in {chama.name}.
-Please log in to ChamaLink to view details and make payment.
-- ChamaLink
+Please log in to Bwire Finance Cloud to view details and make payment.
+- Bwire Finance Cloud
 """.strip()
     
     return sms_service.send_sms(user.phone, message)
@@ -147,7 +147,7 @@ def send_meeting_reminder_sms(user, chama, meeting_date):
 Dear {user.first_name},
 Reminder: {chama.name} meeting scheduled for {meeting_date.strftime('%A, %B %d, %Y')}.
 Don't forget to attend!
-- ChamaLink
+- Bwire Finance Cloud
 """.strip()
     
     return sms_service.send_sms(user.phone, message)
@@ -157,8 +157,8 @@ def send_contribution_reminder_sms(user, chama, amount_due):
     message = f"""
 Dear {user.first_name},
 Your contribution of KES {amount_due:,.2f} to {chama.name} is due.
-Please make your payment via M-Pesa or log in to ChamaLink.
-- ChamaLink
+Please make your payment via M-Pesa or log in to Bwire Finance Cloud.
+- Bwire Finance Cloud
 """.strip()
     
     return sms_service.send_sms(user.phone, message)
@@ -170,7 +170,7 @@ Dear {user.first_name},
 Payment confirmed! KES {amount:,.2f} received for {chama.name}.
 Transaction ID: {transaction_id}
 Thank you for your contribution.
-- ChamaLink
+- Bwire Finance Cloud
 """.strip()
     
     return sms_service.send_sms(user.phone, message)
@@ -180,8 +180,8 @@ def send_membership_approved_sms(user, chama):
     message = f"""
 Dear {user.first_name},
 Congratulations! Your membership to {chama.name} has been approved.
-Log in to ChamaLink to complete your registration fee payment and start participating.
-- ChamaLink
+Log in to Bwire Finance Cloud to complete your registration fee payment and start participating.
+- Bwire Finance Cloud
 """.strip()
     
     return sms_service.send_sms(user.phone, message)
@@ -192,7 +192,7 @@ def send_loan_disbursement_sms(user, chama, amount, mpesa_number):
 Dear {user.first_name},
 Your loan of KES {amount:,.2f} from {chama.name} has been disbursed to {mpesa_number}.
 Please check your M-Pesa messages for confirmation.
-- ChamaLink
+- Bwire Finance Cloud
 """.strip()
     
     return sms_service.send_sms(user.phone, message)
@@ -229,9 +229,9 @@ def send_chama_creation_sms(creator, chama):
     """Send SMS when a new chama is created"""
     message = f"""
 Dear {creator.first_name},
-Congratulations! Your chama '{chama.name}' has been successfully created on ChamaLink.
+Congratulations! Your chama '{chama.name}' has been successfully created on Bwire Finance Cloud.
 You can now invite members and start managing your group finances digitally.
-- ChamaLink Team
+- Bwire Finance Cloud Team
 """.strip()
     
     return sms_service.send_sms(creator.phone, message)
@@ -240,9 +240,9 @@ def send_member_invitation_sms(invitee_phone, inviter_name, chama_name, join_lin
     """Send SMS invitation to join a chama"""
     message = f"""
 Dear Member,
-{inviter_name} has invited you to join '{chama_name}' on ChamaLink - Kenya's leading chama management platform.
+{inviter_name} has invited you to join '{chama_name}' on Bwire Finance Cloud - Kenya's leading chama management platform.
 Join here: {join_link}
-- ChamaLink
+- Bwire Finance Cloud
 """.strip()
     
     return sms_service.send_sms(invitee_phone, message)
@@ -257,8 +257,8 @@ def send_loan_application_sms(admins, applicant, chama, loan_amount):
     message = f"""
 New Loan Alert - {chama.name}
 {applicant.first_name} {applicant.last_name} has applied for a loan of KES {loan_amount:,.2f}.
-Please log in to ChamaLink to review and approve.
-- ChamaLink
+Please log in to Bwire Finance Cloud to review and approve.
+- Bwire Finance Cloud
 """.strip()
     
     return sms_service.send_bulk_sms(admin_phones, message)
@@ -270,7 +270,7 @@ Payment Reminder - {chama.name}
 Dear {borrower.first_name},
 Your loan repayment of KES {amount_due:,.2f} is due on {due_date.strftime('%B %d, %Y')}.
 Please make payment via M-Pesa or contact your chama treasurer.
-- ChamaLink
+- Bwire Finance Cloud
 """.strip()
     
     return sms_service.send_sms(borrower.phone, message)
@@ -286,7 +286,7 @@ def send_savings_goal_achievement_sms(members, chama, goal_name, amount_achieved
 🎉 Goal Achieved! - {chama.name}
 Congratulations! We've reached our savings goal '{goal_name}' with KES {amount_achieved:,.2f}!
 Thank you for your commitment and contributions.
-- ChamaLink
+- Bwire Finance Cloud
 """.strip()
     
     return sms_service.send_bulk_sms(member_phones, message)
@@ -303,7 +303,7 @@ def send_emergency_alert_sms(members, chama, alert_message, sender_name):
 From: {sender_name}
 {alert_message}
 Please respond or contact your chama officials immediately.
-- ChamaLink Emergency Alert
+- Bwire Finance Cloud Emergency Alert
 """.strip()
     
     return sms_service.send_bulk_sms(member_phones, message)
@@ -317,8 +317,8 @@ This month:
 • Contributions: KES {total_contributions:,.2f}
 • Loans taken: KES {total_loans:,.2f}  
 • Account balance: KES {balance:,.2f}
-Full statement available on ChamaLink.
-- ChamaLink
+Full statement available on Bwire Finance Cloud.
+- Bwire Finance Cloud
 """.strip()
     
     return sms_service.send_sms(member.phone, message)
@@ -361,8 +361,8 @@ Welcome to {chama.name}! 🎉
 Dear {new_member.first_name},
 You're now a registered member. Your journey to financial empowerment starts here!
 Treasurer contact: {treasurer_contact}
-Access your account: chamalink.co.ke
-- ChamaLink & {chama.name}
+Access your account: bwirefinance.co.ke
+- Bwire Finance Cloud & {chama.name}
 """.strip()
     
     return sms_service.send_sms(new_member.phone, message)
@@ -376,9 +376,9 @@ def send_system_maintenance_sms(users, maintenance_date, duration):
     
     message = f"""
 System Maintenance Notice
-ChamaLink will be under maintenance on {maintenance_date.strftime('%B %d, %Y')} for {duration}.
+Bwire Finance Cloud will be under maintenance on {maintenance_date.strftime('%B %d, %Y')} for {duration}.
 Services will be temporarily unavailable. We apologize for any inconvenience.
-- ChamaLink Technical Team
+- Bwire Finance Cloud Technical Team
 """.strip()
     
     return sms_service.send_bulk_sms(user_phones, message)
@@ -393,8 +393,8 @@ def send_suspicious_activity_alert_sms(admins, chama, activity_description):
     message = f"""
 🔒 Security Alert - {chama.name}
 Suspicious activity detected: {activity_description}
-Please log in to ChamaLink immediately to review and secure your account.
-- ChamaLink Security Team
+Please log in to Bwire Finance Cloud immediately to review and secure your account.
+- Bwire Finance Cloud Security Team
 """.strip()
     
     return sms_service.send_bulk_sms(admin_phones, message)

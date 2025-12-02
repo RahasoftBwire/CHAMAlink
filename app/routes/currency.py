@@ -214,7 +214,7 @@ def price_calculator():
     # Get actual subscription plans from database
     plans = SubscriptionPlan.query.filter_by(is_active=True).order_by(SubscriptionPlan.price).all()
     
-    # Real pricing structure from CHAMAlink
+    # Real pricing structure from Bwire Finance Cloud
     real_pricing = {
         'KES': {'Basic': 500, 'Classic': 1200, 'Advanced': 2500, 'Enterprise': 5000},
         'USD': {'Basic': 5, 'Classic': 12, 'Advanced': 25, 'Enterprise': 50},

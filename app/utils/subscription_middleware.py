@@ -1,5 +1,5 @@
 """
-Subscription middleware for CHAMAlink
+Subscription middleware for Bwire Finance Cloud
 Enforces trial and subscription limits
 """
 
@@ -62,7 +62,7 @@ def require_active_subscription(f):
         
         # Handle different expiration scenarios
         if status == 'trial_expired':
-            flash('Your 30-day free trial has expired. Please upgrade to continue using CHAMAlink.', 'error')
+            flash('Your 30-day free trial has expired. Please upgrade to continue using Bwire Finance Cloud.', 'error')
             return redirect(url_for('subscription_new.trial_expired'))
         elif status == 'expired':
             flash('Your subscription has expired. Please renew to continue.', 'error')

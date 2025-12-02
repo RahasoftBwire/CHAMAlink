@@ -41,7 +41,7 @@ def dashboard():
         
         # Check if subscription is expired
         if not subscription.is_active:
-            flash('Your subscription has expired. Please upgrade to continue using ChamaLink.', 'danger')
+            flash('Your subscription has expired. Please upgrade to continue using Bwire Finance Cloud.', 'danger')
             return redirect(url_for('subscription.plans'))
     
     # Get user's chamas
@@ -79,7 +79,7 @@ def dashboard():
 def supabase_test():
     from app.utils.supabase_client import supabase
     try:
-        result = supabase.table("test").insert({"message": "ChamaLink is live 💡"}).execute()
+        result = supabase.table("test").insert({"message": "Bwire Finance Cloud is live 💡"}).execute()
         return f"Inserted: {result.data}"
     except Exception as e:
         return f"Error: {e}"
@@ -210,7 +210,7 @@ def dashboard_stats():
 # Add missing routes
 @main.route('/about')
 def about():
-    """About ChamaLink page"""
+    """About Bwire Finance Cloud page"""
     return render_template('about.html')
 
 @main.route('/features')
@@ -516,7 +516,7 @@ def export_all_chamas():
     # Create response
     response = make_response(output.getvalue())
     response.headers['Content-Type'] = 'text/csv'
-    response.headers['Content-Disposition'] = f'attachment; filename=chamalink_all_chamas_{datetime.now().strftime("%Y%m%d_%H%M%S")}.csv'
+    response.headers['Content-Disposition'] = f'attachment; filename=bwirefinance_all_chamas_{datetime.now().strftime("%Y%m%d_%H%M%S")}.csv'
     
     return response
 
@@ -534,8 +534,8 @@ def test_email():
         
         # Create test email
         msg = Message(
-            subject='ChamaLink Test Email - System Working!',
-            sender=('ChamaLink System', 'noreply@chamalink.co.ke'),
+            subject='Bwire Finance Cloud Test Email - System Working!',
+            sender=('Bwire Finance Cloud System', 'noreply@bwirefinance.co.ke'),
             recipients=[current_user.email]
         )
         
@@ -549,7 +549,7 @@ def test_email():
                 <h2 style="color: #333;">Hello Founder Bilford! 👑</h2>
                 
                 <p style="font-size: 16px; line-height: 1.6; color: #555;">
-                    Great news! Your ChamaLink email system is working perfectly.
+                    Great news! Your Bwire Finance Cloud email system is working perfectly.
                 </p>
                 
                 <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #667eea;">
@@ -583,7 +583,7 @@ def test_email():
             </div>
             
             <div style="background: #333; color: white; padding: 15px; text-align: center; font-size: 12px;">
-                <p style="margin: 0;">© 2025 ChamaLink - Kenya's Premier Chama Management Platform</p>
+                <p style="margin: 0;">© 2025 Bwire Finance Cloud - Kenya's Premier Chama Management Platform</p>
             </div>
         </div>
         """
@@ -732,7 +732,7 @@ def send_platform_notice():
                 try:
                     success, _ = send_system_email(
                         to_email=creator.email,
-                        subject=f"📢 Important Notice from ChamaLink: {title}",
+                        subject=f"📢 Important Notice from Bwire Finance Cloud: {title}",
                         template='emails/platform_notice.html',
                         user=creator,
                         title=title,

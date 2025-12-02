@@ -1,5 +1,5 @@
 """
-Advanced Security & Monitoring System for ChamaLink
+Advanced Security & Monitoring System for Bwire Finance Cloud
 This module implements comprehensive security measures and attack monitoring
 """
 

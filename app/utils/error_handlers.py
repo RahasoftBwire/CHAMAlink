@@ -1,5 +1,5 @@
 """
-Simple error handling and debugging for ChamaLink
+Simple error handling and debugging for Bwire Finance Cloud
 """
 from flask import jsonify, render_template, current_app, request
 import traceback
